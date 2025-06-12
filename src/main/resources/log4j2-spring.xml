@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" packages="com.example.priceapi.infrastructure.adapter.logging">
+    <Properties>
+        <Property name="serviceName">@serviceName@</Property>
+        <Property name="serviceVersion">@serviceVersion@</Property>
+        <Property name="podUid">${env:POD_UID:-default-pod-id}</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <CustomJsonLayout
+                    serviceName="${serviceName}"
+                    serviceVersion="${serviceVersion}"
+                    podUid="${podUid}"
+                    charset="UTF-8"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
